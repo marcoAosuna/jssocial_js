@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Simple Social Network Sharing Plugin">
+
+    <title>Demos - jsSocials</title>
+
+   <!--  <link rel="stylesheet" type="text/css" href="jssocials/assets/css/main.css" /> -->
+    <link rel="stylesheet" type="text/css" href="font_awesome/css/font-awesome.css" />
+    
+    <!-- <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-plain.css" /> -->
+    <link rel="stylesheet" type="text/css" href="jssocials/assets/temas/jssocials-theme-flat.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-minima.css" />
+    <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-classic.css" /> -->
+    <link rel="stylesheet" type="text/css" href="jssocials/assets/css/jssocials.css" />
+       <style>
+             #shareRoundIcons .jssocials-share-link {
+                border-radius: 50%;
+            }
+
+            .fb-share-button span, #shareNative img {
+                 vertical-align: top !important;
+             }
+             .jssocials {
+                font-size:10px;
+            }
+        </style>
+   
+</head>
+<body>
+  
+
+<div id="share"></div>
+            
+<script src="libs/jquery.js"></script>
+<script src="jssocials/assets/js/jssocials.min.js"></script> 
+
+<script>
+ 
+
+$(document).ready(function(){
+    console.log("ok");
+   
+// share
+    $("#share").jsSocials({
+        showCount: true,
+        showLabel: true,
+        url: "http://veno.es/venobox/",
+        text: "Prueba de twetter",
+        shares: [{
+            share: "twitter",
+            via: "Marco Osuna"
+        }, "facebook", "linkedin", "googleplus"],
+        shareIn: "popup"
+    });
+    
+  });//fin document
+
+
+    
+   
+</script>
+
+
+      
+  </body>
+</html>

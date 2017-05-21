@@ -1,0 +1,179 @@
+***Instrucciones generales*************************************************************************++
+------ deberas copiar la carpeta jssocial, ahi esta el plugin.
+------font_awesome y libs, estaran en public porque son jquery y bootstrap.
+-------Opciones de sociales: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", 
+						"stumbleupon", "pocket", "whatsapp", "viber", "messenger",
+						 "vkontakte", "telegram", "line", "rss"];
+--------Cambio de tamaño:
+        haces un <style en head y añades el tamaño que desea:
+	         .jssocials {
+                font-size:8px;
+            }
+-------En Index:
+      el orden de aparicion de los links y scripts son importante.
+
+    <link rel="stylesheet" type="text/css" href="jssocials/assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="font_awesome/css/font-awesome.css" />
+
+     De estas opciones de abajo, solo deberas elegir una, no mas, sera el tema.
+         <!-- <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-plain.css" /> -->
+         <link rel="stylesheet" type="text/css" href="jssocials/assets/temas/jssocials-theme-flat.css" />
+         <!-- <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-minima.css" />
+         <link rel="stylesheet" type="text/css" href="../dist/jssocials-theme-classic.css" /> -->
+
+    <link rel="stylesheet" type="text/css" href="jssocials/assets/css/jssocials.css" />
+------editar twitter
+      $("#share").jsSocials({
+        showCount: true,
+        showLabel: true,
+        url: "http://veno.es/venobox/",
+        text: "Prueba de twetter",
+        shares: [{
+            share: "twitter",
+            via: "Marco Osuna"
+        }, "facebook", "linkedin", "googleplus"],
+        shareIn: "popup"
+    });
+------    
+
+
+///dentro de  <body> 
+    <body>
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    	<div>Tipo </div>---Aqui van los <div>, en ellos se definira el tipo de iconos
+      por ejemplo:
+<div id="share"></div>
+///////////////////////////////////////////////////////////////////////////////////////////////////////////    	
+
+<script src="libs/jquery.js"></script>
+<script src="jssocials/assets/js/jssocials.min.js"></script> 
+
+<script>
+
+$(document).ready(function(){
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ -----Aqui iran las instrucciones js, dentro de ready, ejemplo:
+ 			$("#share").jsSocials({
+           shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+            });	
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+});/*fin document
+ </script>
+</body> 
+***********************************************************************************************************************+
+Intrucciones tipo de <div>
+a) tipo que muestra la social en toda la pantalla:
+	 <div id="share"></div>
+	 *****script que lo acompaña:
+	 	$("#share").jsSocials({
+           shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+        });
+b)Tipo que muestra la social en una ppantalla chica.
+       <div id="sharePopup"></div>
+       *****script que lo acompaña:
+       	 $("#sharePopup").jsSocials({
+    		shareIn: "popup",
+    			shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon"]
+			});
+c)mostrar iconos sin texto
+	  <div id="shareIcons"></div>
+	    *****script que lo acompaña:
+	    $("#shareIcons").jsSocials({
+    showLabel: false,
+    showCount: false,
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+});
+
+d) Iconos redondeados:
+	añades un <style>
+	   <style>
+   			 #shareRoundIcons .jssocials-share-link {
+        		border-radius: 50%;
+    		}
+
+    		.fb-share-button span, #shareNative img {
+       			 vertical-align: top !important;
+   			 }
+		</style>
+ <div id="shareRoundIcons"></div>
+	    *****script que lo acompaña:
+	    	$("#shareRoundIcons").jsSocials({
+    	showLabel: false,
+    	showCount: false,
+    	shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+		});
+e) Con contador dentro del icono
+	 <div id="shareIconsCountInside"></div>
+	  *****script que lo acompaña:
+	  $("#shareIconsCountInside").jsSocials({
+    url: "http://www.google.com",
+    text: "Google Search Page",
+    showLabel: false,
+    showCount: "inside",
+    shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+		});
+f) boton con etiqueta
+  <div id="shareButtonLabel"></div>
+   *****script que lo acompaña:
+   $("#shareButtonLabel").jsSocials({
+    showCount: false,
+    showLabel: true,
+    shares: [
+        "email",
+        "twitter",
+        "facebook",
+        "googleplus",
+        "linkedin",
+        { share: "pinterest", label: "Pin this" },
+        "stumbleupon",
+        "whatsapp"
+    ]
+	});
+g)  con simbolo y contador
+	 <div id="shareIconsCount"></div>
+	  *****script que lo acompaña:
+	  $("#shareIconsCount").jsSocials({
+    url: "http://www.google.com",
+    text: "Google Search Page",
+    showCount: true,
+    showLabel: false,
+    shares: [
+        { share: "twitter", via: "artem_tabalin", hashtags: "search,google" },
+        "facebook",
+        "googleplus",
+        "linkedin",
+        "pinterest",
+        "stumbleupon",
+        "whatsapp"
+    ]
+	});
+h)con simbolo, etiqueta y contador
+	 <div id="shareButtonLabelCount"></div>
+	  *****script que lo acompaña:
+	  $("#shareButtonLabelCount").jsSocials({
+    showCount: true,
+    showLabel: true,
+    shares: ["twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+     });
+i)
+
+
+
+
+**********************************************************************************************************************
+CUSTOM
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~++
+a)cambiar tamaño de la ventana
+	jsSocials.shareStrategies["my_popup"] = function(args) {
+    return $("<div>").click(function() {
+            window.open(args.shareUrl, "MyShareWindow", 
+                "width=400, height=200, location=1, resizeable=1, menubar=0, scrollbars=0, status=0, titlebar=0, toolbar=0");
+        });
+     };
+
+     $("#jsSocials").jsSocials({
+         shareIn: "my_popup",
+         shares: ["twitter", "facebook", "googleplus","rss"]
+      });
+
+
